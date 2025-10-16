@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VCF to CSV 변환기</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>📇 VCF to CSV</h1>
+        <p class="subtitle">연락처 파일을 안전하게 변환하세요 <span class="version">v{{ version }}</span></p>
+        
+        <form method="POST" enctype="multipart/form-data" id="uploadForm">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📁</div>
+                <p><strong>VCF 파일을 드래그하거나 클릭하세요</strong></p>
+                <p style="color: #999; font-size: 14px; margin-top: 10px;">또는 파일을 선택하세요</p>
+                <input type="file" name="file" id="fileInput" accept=".vcf" required>
+            </div>
+            
+            <div class="file-info" id="fileInfo">
+                <strong>선택된 파일:</strong> <span id="fileName"></span>
+            </div>
+            
+            <!-- 전화번호 포맷 옵션 -->
+            <div class="format-options">
+                <h3>📱 전화번호 포맷 선택</h3>
+                <div class="format-option">
+                    <input type="radio" id="number_only" name="format_type" value="number_only">
+                    <label for="number_only">숫자만</label>
+                </div>
+                <div class="format-option">
+                    <input type="radio" id="dash" name="format_type" value="dash" checked>
+                    <label for="dash">대시 구분</label>
+                </div>
+                <div class="format-option">
+                    <input type="radio" id="space" name="format_type" value="space">
+                    <label for="space">공백 구분</label>
+                </div>
+                <div class="format-option">
+                    <input type="radio" id="custom" name="format_type" value="custom">
+                    <label for="custom">커스텀 구분자:</label>
+                    <input type="text" id="customSeparator" name="custom_separator" value="-" maxlength="5" placeholder="예: ., /">
+                </div>
+                
+                <div class="format-option checkbox-option">
+                    <input type="checkbox" id="addQuote" name="add_quote" value="true" checked>
+                    <label for="addQuote">Excel 자동변환 방지 (맨 앞에 ' 추가)</label>
+                </div>
+                
+                <div class="warning-box" id="warningBox" style="display: none;">
+                    <span class="warning-icon">⚠️</span>
+                    <span class="warning-text">Excel에서 전화번호가 숫자로 자동변환될 수 있습니다. <strong>자동변환 방지를 추천합니다.</strong></span>
+                </div>
+                
+                <div class="preview-box">
+                    <strong>미리보기:</strong>
+                    <div id="previewResult">'010-1234-5678</div>
+                </div>
+            </div>
+            
+            <button type="submit" id="convertBtn">🔄 CSV로 변환하기</button>
+        </form>
+        
+        <div class="result" id="result"></div>
+        
+        <div class="features">
+            <div class="feature">한글 이름 자동 디코딩</div>
+            <div class="feature">전화번호 자동 포맷팅 (구분자 선택 가능)</div>
+            <div class="feature">Excel에서 바로 열기 가능</div>
+            <div class="feature">서버에 저장되지 않습니다 (개인정보 보호)</div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+
+

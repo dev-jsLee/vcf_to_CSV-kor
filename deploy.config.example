@@ -1,0 +1,28 @@
+# VCF to CSV Converter - Deploy Configuration (Example)
+# 이 파일을 deploy.config로 복사하여 사용하세요
+
+# 배포 주체 (Docker Hub 사용자명 등)
+# 예: DEPLOYER=your-dockerhub-username
+DEPLOYER=jslee7518
+
+# Docker 이미지 이름 (소문자 권장)
+# DEPLOYER가 설정되면: jslee7518/vcftocsv:v1.0.0
+# DEPLOYER가 비어있으면: vcftocsv:v1.0.0
+IMAGE_NAME=vcftocsv
+
+# 컨테이너 이름
+CONTAINER_NAME=vcftocsv
+
+# 포트 설정 (호스트:컨테이너)
+HOST_PORT=5000
+CONTAINER_PORT=5000
+
+# Docker Hub에 푸시할지 여부 (true/false)
+# true로 설정하면 deploy.cmd 실행 시 자동으로 Docker Hub에 푸시됩니다
+# 주의: 사전에 'docker login' 필요
+PUSH_TO_REGISTRY=false
+
+# Docker Hub 레지스트리 (비어있으면 Docker Hub 기본)
+# 사설 레지스트리 사용 시: registry.example.com
+REGISTRY=
+
