@@ -122,8 +122,12 @@ extract_phones/
 ├── deploy.cmd               # 자동 배포 스크립트
 ├── version.cmd              # 버전 확인 스크립트
 ├── DEPLOY_GUIDE.md          # 배포 가이드
+├── TEMPLATE_GUIDE.md        # 템플릿 가이드 (AI/개발자용)
 └── README.md                # 이 파일
 ```
+
+> 💡 **이 프로젝트를 템플릿으로 사용하고 싶으신가요?**  
+> [`TEMPLATE_GUIDE.md`](TEMPLATE_GUIDE.md) 문서를 참고하세요. AI 어시스턴트와 개발자를 위한 상세한 구조 설명이 포함되어 있습니다.
 
 ## 📦 버전 관리 및 배포
 
